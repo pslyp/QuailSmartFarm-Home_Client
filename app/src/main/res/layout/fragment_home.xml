@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="170dp"
+                android:layout_marginLeft="@dimen/margin_padding_extra_large"
+                android:layout_marginTop="@dimen/margin_padding_large"
+                android:layout_marginRight="@dimen/margin_padding"
+                android:layout_marginBottom="@dimen/margin_padding_extra_small">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_padding_small"
+                    android:text="Lamp"
+                    android:textSize="@dimen/text_size_large"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="170dp"
+                android:layout_marginTop="@dimen/margin_padding_large"
+                android:layout_marginRight="@dimen/margin_padding_extra_large"
+                android:layout_marginLeft="@dimen/margin_padding_large">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_padding_small"
+                    android:text="Fan"
+                    android:textSize="@dimen/text_size_large"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="170dp"
+                android:layout_marginLeft="@dimen/margin_padding_extra_large"
+                android:layout_marginTop="@dimen/margin_padding_extra_large"
+                android:layout_marginRight="@dimen/margin_padding"
+                android:layout_marginBottom="@dimen/margin_padding_extra_small">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_padding_small"
+                    android:text="Feed"
+                    android:textSize="@dimen/text_size_large"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="170dp"
+                android:layout_marginTop="@dimen/margin_padding_extra_large"
+                android:layout_marginRight="@dimen/margin_padding_extra_large"
+                android:layout_marginLeft="@dimen/margin_padding_large">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/margin_padding_small"
+                    android:text="Water"
+                    android:textSize="@dimen/text_size_large"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </TableRow>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:layout_marginTop="@dimen/margin_padding_extra_large"
+            android:layout_marginRight="@dimen/margin_padding_extra_large"
+            android:layout_marginLeft="@dimen/margin_padding_extra_large">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Brightness"
+                        android:textSize="@dimen/text_size_large"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Temperature"
+                        android:textSize="@dimen/text_size_large"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </TableLayout>
+
+</FrameLayout>
