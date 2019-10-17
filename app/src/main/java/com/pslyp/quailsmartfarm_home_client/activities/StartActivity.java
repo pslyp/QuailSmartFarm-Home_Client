@@ -27,7 +27,7 @@ public class StartActivity extends AppCompatActivity {
                 .mode(MODE_PRIVATE)
                 .build();
 
-        if(prefs.getBoolean("LOGIN", false)) {
+        if(prefs.getBoolean("SIGNIN", false)) {
             startActivity(new Intent(StartActivity.this, MainActivity.class));
             finish();
         } else {

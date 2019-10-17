@@ -50,6 +50,7 @@
             android:text="@string/forget_password"/>
 
         <Button
+            android:id="@+id/sign_in_button"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_padding_extra_large"
@@ -58,5 +59,13 @@
             android:text="@string/sign_in"/>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/create_user_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sign_in_button"
+        android:layout_centerHorizontal="true"
+        android:text="@string/create_new_account"/>
 
 </LinearLayout>
