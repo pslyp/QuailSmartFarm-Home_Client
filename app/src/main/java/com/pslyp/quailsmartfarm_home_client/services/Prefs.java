@@ -21,10 +21,20 @@ public class Prefs {
         throw new RuntimeException("Don't use Preference");
     }
 
+    public void putString(final String key, final String value) {
+        Editor editor = edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
     public void putBoolean(final String key, final Boolean value) {
         Editor editor = edit();
         editor.putBoolean(key, value);
         editor.commit();
+    }
+
+    public String getString(final String key, final String value) {
+        return getPreferences().getString(key, value);
     }
 
     public Boolean getBoolean(final String key, final Boolean value) {

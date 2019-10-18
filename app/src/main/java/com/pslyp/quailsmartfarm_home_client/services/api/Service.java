@@ -1,6 +1,9 @@
 package com.pslyp.quailsmartfarm_home_client.services.api;
 
 import com.pslyp.quailsmartfarm_home_client.models.Response;
+import com.pslyp.quailsmartfarm_home_client.models.SignInResponse;
+
+import java.util.Optional;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -17,7 +20,7 @@ public interface Service {
 
     @FormUrlEncoded
     @POST("signin.php")
-    Call<Response> signIn(
+    Call<SignInResponse> signIn(
             @Field("email") String email,
             @Field("password") String password
     );

@@ -12,12 +12,14 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.pslyp.quailsmartfarm_home_client.R;
-import com.pslyp.quailsmartfarm_home_client.models.Response;
+import com.pslyp.quailsmartfarm_home_client.models.SignInResponse;
+import com.pslyp.quailsmartfarm_home_client.models.User;
 import com.pslyp.quailsmartfarm_home_client.services.Prefs;
 import com.pslyp.quailsmartfarm_home_client.services.api.RetrofitClient;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SigninActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -59,20 +61,30 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         String email = emailText.getEditText().getText().toString().trim();
         String password = passwordText.getEditText().getText().toString().trim();
 
-        Call<Response> call = RetrofitClient.getInstance().api().signIn(email, password);
-        call.enqueue(new Callback<Response>() {
+        Call<SignInResponse> call = RetrofitClient.getInstance().api().signIn(email, password);
+        call.enqueue(new Callback<SignInResponse>() {
             @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                Response res = response.body();
+            public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
+                SignInResponse res = response.body();
+                User user = res.getUser();
 
                 if(res.getStatus() == 200) {
                     if(res.getMessage().equals("success")) {
-                        Prefs prefs = new Prefs.Builder(getApplicationContext())
+                        Prefs prefsAuthen = new Prefs.Builder(getApplicationContext())
                                 .name("Authen")
                                 .mode(MODE_PRIVATE)
                                 .build();
 
-                        prefs.putBoolean("SIGNIN", true);
+                        prefsAuthen.putBoolean("SIGNIN", true);
+
+                        Prefs prefsProfile = new Prefs.Builder(getApplicationContext())
+                                .name("Profile")
+                                .mode(MODE_PRIVATE)
+                                .build();
+
+                        prefsProfile.putString("USERNAME", user.getUsername());
+                        prefsProfile.putString("EMAIL", user.getEmail());
+                        prefsProfile.putString("PICTURE", user.getPicture());
 
                         startActivity(new Intent(SigninActivity.this, MainActivity.class));
                         finish();
@@ -83,7 +95,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
             }
 
             @Override
-            public void onFailure(Call<Response> call, Throwable t) {
+            public void onFailure(Call<SignInResponse> call, Throwable t) {
                 Log.e("Sign in", t.getMessage());
             }
         });
