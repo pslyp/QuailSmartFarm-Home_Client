@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    //Status On_Off
+    <color name="statusOnStart">#F5A0A0</color>
+    <color name="statusOnEnd">#EB0F0A</color>
+    <color name="statusOffStart">#F1F1F1</color>
+    <color name="statusOffEnd">#8D8C8C</color>
+
+    <color name="signinButton">#E68056</color>
+
 </resources>

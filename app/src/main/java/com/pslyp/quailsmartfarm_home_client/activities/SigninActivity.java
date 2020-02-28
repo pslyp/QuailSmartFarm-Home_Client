@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputLayout;
 import com.pslyp.quailsmartfarm_home_client.R;
 import com.pslyp.quailsmartfarm_home_client.models.SignInResponse;
-import com.pslyp.quailsmartfarm_home_client.models.User;
 import com.pslyp.quailsmartfarm_home_client.services.Prefs;
 import com.pslyp.quailsmartfarm_home_client.services.api.RetrofitClient;
 
@@ -30,7 +29,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
+        setContentView(R.layout.activity_sign_in);
 
         initInstance();
     }
@@ -51,46 +50,50 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                 signIn();
                 break;
             case R.id.create_user_text_view :
-                startActivity(new Intent(SigninActivity.this, SignUpActivity.class));
-                finish();
+                startActivity(new Intent(SigninActivity.this, SignupActivity.class));
                 break;
         }
     }
 
     private void signIn() {
-        String email = emailText.getEditText().getText().toString().trim();
-        String password = passwordText.getEditText().getText().toString().trim();
+        final String email = emailText.getEditText().getText().toString().trim();
+        final String password = passwordText.getEditText().getText().toString().trim();
+        
+        if(email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please enter an email & password!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Call<SignInResponse> call = RetrofitClient.getInstance().api().signIn(email, password);
         call.enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 SignInResponse res = response.body();
-                User user = res.getUser();
+                int status = res.getStatus();
 
-                if(res.getStatus() == 200) {
-                    if(res.getMessage().equals("success")) {
-                        Prefs prefsAuthen = new Prefs.Builder(getApplicationContext())
-                                .name("Authen")
-                                .mode(MODE_PRIVATE)
-                                .build();
+                if(status == 200) {
+                    Prefs prefsAuthen = new Prefs.Builder(getApplicationContext())
+                            .name("Authen")
+                            .mode(MODE_PRIVATE)
+                            .build();
 
-                        prefsAuthen.putBoolean("SIGNIN", true);
+                    prefsAuthen.putBoolean("SIGNIN", true);
+                    prefsAuthen.putString("TOKEN", res.getToken());
 
-                        Prefs prefsProfile = new Prefs.Builder(getApplicationContext())
-                                .name("Profile")
-                                .mode(MODE_PRIVATE)
-                                .build();
+                    Prefs prefsProfile = new Prefs.Builder(getApplicationContext())
+                            .name("Profile")
+                            .mode(MODE_PRIVATE)
+                            .build();
 
-                        prefsProfile.putString("USERNAME", user.getUsername());
-                        prefsProfile.putString("EMAIL", user.getEmail());
-                        prefsProfile.putString("PICTURE", user.getPicture());
+                    prefsProfile.putString("ID", res.getId());
+                    prefsProfile.putString("USERNAME", res.getUsername());
+                    prefsProfile.putString("EMAIL", email);
+//                    prefsProfile.putString("PICTURE", user.getPicture());
 
-                        startActivity(new Intent(SigninActivity.this, MainActivity.class));
-                        finish();
-                    } else {
-                        Toast.makeText(SigninActivity.this, "EiEi", Toast.LENGTH_SHORT).show();
-                    }
+                    startActivity(new Intent(SigninActivity.this, MainActivity.class));
+                    finish();
+                } else if(status == 401 || status == 416) {
+                    Toast.makeText(SigninActivity.this, "Wrong email or password!", Toast.LENGTH_SHORT).show();
                 }
             }
 

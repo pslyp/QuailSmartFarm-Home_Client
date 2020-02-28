@@ -1,27 +1,29 @@
 package com.pslyp.quailsmartfarm_home_client.models;
 
-public class SignInResponse {
 
-    private int status;
-    private String message;
-    private User user;
+public class SignInResponse extends BaseResponse {
 
-    public SignInResponse(int statuss, String message, User data) {
-        this.status = statuss;
-        this.message = message;
-        this.user = data;
+    private String id;
+    private String username;
+    private String token;
+
+    public SignInResponse(int status, String id, String username, String token) {
+        super(status);
+        this.id = id;
+        this.username = username;
+        this.token = token;
     }
 
-    public int getStatus() {
-        return status;
+    public String getId() {
+        return id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getUsername() {
+        return username;
     }
 
-    public User getUser() {
-        return user;
+    public String getToken() {
+        return token;
     }
 
 }

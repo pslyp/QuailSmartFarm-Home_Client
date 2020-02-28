@@ -8,7 +8,8 @@ public class RetrofitClient {
 
     private static RetrofitClient client;
     private static Retrofit retrofit;
-    private static final String BASE_URL = "http://pilot.cp.su.ac.th/usr/u07580570/quailsmartfarm/";
+//    private static final String BASE_URL = "http://pilot.cp.su.ac.th/usr/u07580570/quailsmartfarm/";
+    private static final String BASE_URL = "https://quailsmartfarm-home.herokuapp.com/api/v1/";
 
     private RetrofitClient() {
         retrofit = new Retrofit.Builder()

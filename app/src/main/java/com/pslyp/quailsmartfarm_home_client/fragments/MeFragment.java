@@ -1,6 +1,7 @@
 package com.pslyp.quailsmartfarm_home_client.fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,7 +14,9 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.pslyp.quailsmartfarm_home_client.R;
 import com.pslyp.quailsmartfarm_home_client.activities.SigninActivity;
 import com.pslyp.quailsmartfarm_home_client.services.Prefs;
@@ -24,6 +27,8 @@ import com.pslyp.quailsmartfarm_home_client.services.Prefs;
 public class MeFragment extends Fragment implements View.OnClickListener {
 
     private Button logOutButton;
+    private CircularImageView pictureProfile;
+    private TextView nameProfile, emailProfile;
 
     public MeFragment() {
         // Required empty public constructor
@@ -37,6 +42,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         setHasOptionsMenu(true);
 
         initInstance(view);
+        setProfile(view);
 
         return view;
     }
@@ -65,8 +71,21 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initInstance(View view) {
+        pictureProfile = view.findViewById(R.id.picture_profile_image);
+        nameProfile = view.findViewById(R.id.name_profile_text_view);
+        emailProfile = view.findViewById(R.id.email_profile_text_view);
         logOutButton = view.findViewById(R.id.log_out_button);
         logOutButton.setOnClickListener(this);
+    }
+
+    private void setProfile(View view) {
+        Prefs prefsProfile = new Prefs.Builder(getContext())
+                .name("Profile")
+                .mode(Context.MODE_PRIVATE)
+                .build();
+
+        nameProfile.setText(prefsProfile.getString("USERNAME", ""));
+        emailProfile.setText(prefsProfile.getString("EMAIL", ""));
     }
 
 }
