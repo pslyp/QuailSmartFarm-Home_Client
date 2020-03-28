@@ -14,4 +14,15 @@
     <string name="or">or</string>
     <string name="forget_password">Forget password</string>
 
+    <string name="username_on_toolber">Username</string>
+    <string name="configs">Configs</string>
+    <string name="want_sign_out">Are you sure you want to sign out?</string>
+    <string name="cancel">Cancel</string>
+    <string name="sign_out">Sign out</string>
+
+    <string name="brightness">Brightness</string>
+    <string name="temperature">Temperature</string>
+    <string name="light">Light</string>
+    <string name="fan">Fan</string>
+
 </resources>

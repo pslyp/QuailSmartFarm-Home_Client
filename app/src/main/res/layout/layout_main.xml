@@ -1,18 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBackground"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/app_bar"
-        layout="@layout/app_bar"/>
+    <!--    <include-->
+    <!--        android:id="@+id/app_bar"-->
+    <!--        layout="@layout/app_bar" />-->
 
-    <FrameLayout
-        android:id="@+id/frame_container"
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/frame_container"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_main"
+            android:layout_width="382dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/margin_padding"
+            app:layout_constraintBottom_toTopOf="@id/card_view_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/relative_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_view_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_padding"
+                        android:text="@string/brightness"
+                        android:textSize="@dimen/text_size_extra_large" />
+
+                    <TextView
+                        android:id="@+id/brightness_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_padding"
+                        android:layout_toLeftOf="@id/text_view_2"
+                        android:text="1200"
+                        android:textSize="@dimen/text_size_extra_large" />
+
+                    <TextView
+                        android:id="@+id/text_view_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/margin_padding"
+                        android:text="unit"
+                        android:textSize="@dimen/text_size_extra_large" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_view_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_padding"
+                        android:text="@string/temperature"
+                        android:textSize="@dimen/margin_padding_extra_large" />
+
+                    <TextView
+                        android:id="@+id/temperature_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_padding"
+                        android:layout_toLeftOf="@id/text_view_4"
+                        android:text="50.00"
+                        android:textSize="@dimen/text_size_extra_large" />
+
+                    <TextView
+                        android:id="@+id/text_view_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/margin_padding"
+                        android:text=".C"
+                        android:textSize="@dimen/text_size_extra_large" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_1"
+            android:layout_width="182dp"
+            android:layout_height="182dp"
+            app:cardCornerRadius="@dimen/margin_padding"
+            app:layout_constraintBottom_toTopOf="@id/card_view_3"
+            app:layout_constraintEnd_toStartOf="@id/card_view_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_view_main">
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_2"
+            android:layout_width="182dp"
+            android:layout_height="182dp"
+            app:cardCornerRadius="@dimen/margin_padding"
+            app:layout_constraintBottom_toTopOf="@id/card_view_4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_view_1"
+            app:layout_constraintTop_toBottomOf="@id/card_view_main">
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_3"
+            android:layout_width="182dp"
+            android:layout_height="182dp"
+            app:cardCornerRadius="@dimen/margin_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/card_view_4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_view_1">
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_4"
+            android:layout_width="182dp"
+            android:layout_height="182dp"
+            app:cardCornerRadius="@dimen/margin_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/card_view_3"
+            app:layout_constraintTop_toBottomOf="@id/card_view_2">
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

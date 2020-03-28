@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/profile_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="@dimen/margin_padding"
+        android:src="@drawable/ic_person_black_24dp"
+        app:civ_border_width="0dp" />
 
     <TextView
         android:id="@+id/text_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toolbar"
-        android:textSize="@dimen/text_size_large"/>
+        android:text="@string/username_on_toolber"
+        android:textSize="@dimen/text_size_large" />
 
 </androidx.appcompat.widget.Toolbar>

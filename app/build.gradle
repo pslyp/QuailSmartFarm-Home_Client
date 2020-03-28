@@ -34,6 +34,8 @@ dependencies {
     //Other Libraries
     //CircularImageView
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.4'
     //Gson
