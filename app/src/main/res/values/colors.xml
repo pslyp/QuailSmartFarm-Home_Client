@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#D4A985</color>
-    <color name="colorPrimaryDark">#D4A985</color>
+    <color name="colorPrimary">#E0B28D</color>
+    <color name="colorPrimaryDark">#E7A978</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="colorBackground">#EDBD95</color>
+    <color name="colorBackground">#F1F1F1</color>
 
     //Status On_Off
     <color name="statusOnStart">#F5A0A0</color>
